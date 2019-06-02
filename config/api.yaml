@@ -1,0 +1,15 @@
+database:
+    username: 'atyma'
+    password: 'a10121999@A'
+    port: ':3306'
+    host: 'localhost'
+    name: 'Supply_And_Demand'
+
+server:
+    port: ':1234'
+    debug: true
+    read_timeout_seconds: 10
+    write_timeout_seconds: 5
+nats:
+    qos: 'message'
+    host: ':4222'

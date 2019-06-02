@@ -1,0 +1,187 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "sa labs",
+    "description": "API Docs for service that connects to ",
+    "contact": {
+      "email": "a.tymkiv99@gmail.com"
+    }
+  },
+  "host": "localhost:1234",
+  "paths": {
+    "/shop/all": {
+      "get": {
+        "tags": [
+          "shops"
+        ],
+        "summary": "Shows all shops.",
+        "operationId": "shopView",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/shopsResp"
+          }
+        }
+      }
+    },
+    "/shop/{id}": {
+      "get": {
+        "description": "summary: Gets address by shop ID\ndescription: Gets address by shop ID",
+        "tags": [
+          "shops"
+        ],
+        "operationId": "addressGet",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/addressResp"
+          }
+        }
+      }
+    },
+    "/goods/all": {
+      "get": {
+        "tags": [
+          "goods"
+        ],
+        "summary": "Shows all goods.",
+        "responses": {
+          "200":{
+            "$ref": "#/responses/goodsResp"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "CreatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "DeletedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ID": {
+          "type": "integer",
+          "format": "uint64"
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "city": {
+          "type": "string",
+          "x-go-name": "City"
+        },
+        "number": {
+          "type": "string",
+          "x-go-name": "Number"
+        },
+        "street": {
+          "type": "string",
+          "x-go-name": "Street"
+        }
+      },
+      "x-go-package": "github.com/atymkiv/sa/model"
+    },
+    "Shop": {
+      "type": "object",
+      "properties": {
+        "address_id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Address_id"
+        },
+        "shop_id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Shop_Id"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Size"
+        },
+        "workers": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Workers"
+        }
+      },
+      "x-go-package": "github.com/atymkiv/sa/model"
+    },
+    "Good": {
+      "type": "object",
+      "properties": {
+        "good_Id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Good_id"
+        },
+        "category_id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Category_Id"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "price"
+        }
+      },
+      "x-go-package": "github.com/atymkiv/sa/model"
+    }
+  },
+  "responses": {
+    "addressResp": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Address": {
+            "$ref": "#/definitions/Address"
+          }
+        }
+      }
+    },
+    "shopsResp": {
+      "description": "Shops feed model response",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Shops": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Shop"
+            }
+          }
+        }
+      }
+    },
+    "goodsResp": {
+      "description": "Goods model response",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "Goods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Good"
+            }
+          }
+        }
+      }
+    }
+  }
+}

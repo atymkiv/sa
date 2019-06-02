@@ -1,0 +1,3 @@
+nats:
+  qos: "message"
+  host: ":4222"
